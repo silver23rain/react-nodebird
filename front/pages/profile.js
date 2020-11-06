@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import AppLayout from "../componets/AppLayout";
 
-const Home = () => {
+const Profile = () => {
     return (
         <>
             <Head>
@@ -13,10 +13,10 @@ const Home = () => {
                 />
             </Head>
             <AppLayout>
-                <div>Hello Next</div>
+                <div>내 프로필</div>
             </AppLayout>
         </>
     );
 };
 
-export default Home;
+export default Profile;
