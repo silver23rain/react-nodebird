@@ -5,9 +5,18 @@ import Form from "antd/lib/form/Form";
 import { Input, Checkbox, Button } from "antd";
 
 const Signup = () => {
-    const [id, setId] = useState("");
-    const [nick, setNick] = useState("");
-    const [password, setPassword] = useState("");
+    // custom hook
+    const useInput = (inputValue = null) => {
+        const [value, setter] = useState(inputValue);
+        const handler = (e) => {
+            setter(e.target.value);
+        };
+        return [value, handler];
+    };
+
+    const [id, setId] = useInput("");
+    const [nick, setNick] = useInput("");
+    const [password, setPassword] = useInput("");
     const [passwordCheck, setPasswordCheck] = useState("");
     const [term, setTerm] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
@@ -22,18 +31,6 @@ const Signup = () => {
             setTermError(true);
         }
         console.log(id, nick, password, passwordCheck, term);
-    };
-
-    const onChangeId = (e) => {
-        setId(e.target.value);
-    };
-
-    const onChangeNick = (e) => {
-        setNick(e.target.value);
-    };
-
-    const onChangePassword = (e) => {
-        setPassword(e.target.value);
     };
 
     const onChangePassCheck = (e) => {
@@ -64,7 +61,7 @@ const Signup = () => {
                             name="user-id"
                             value={id}
                             required
-                            onChange={onChangeId}
+                            onChange={setId}
                         />
                     </div>
                     <div>
@@ -74,7 +71,7 @@ const Signup = () => {
                             name="user-nick"
                             required
                             value={nick}
-                            onChange={onChangeNick}
+                            onChange={setNick}
                         />
                     </div>
                     <div>
@@ -84,7 +81,7 @@ const Signup = () => {
                             name="user-password"
                             required
                             value={password}
-                            onChange={onChangePassword}
+                            onChange={setPassword}
                             type="password"
                         />
                     </div>
