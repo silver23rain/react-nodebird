@@ -25,7 +25,7 @@ const LoginForm = () => {
 				<br />
 				<Input name="user-password" type="password" value={passeord} onChange={onChangePassword} required />
 			</div>
-			<div>
+			<div style={{ marginTop: '10px' }}>
 				<Button type="primary" htmlType="submit" loading={false}>
 					로그인
 				</Button>
